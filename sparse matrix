@@ -1,0 +1,93 @@
+#include<stdio.h>
+#include<conio.h>
+#include<malloc.h>
+#include<string.h>
+#include<iostream>
+using namespace std;
+
+struct node
+{
+ 	   int data, row, col;
+	   struct nodeB *rp;
+	   struct nodeA *dp;
+};
+
+struct nodeC
+{
+       struct node *dp;
+	   struct nodeC *right;
+
+};
+
+struct nodeR
+{
+       struct node *rp;
+	   struct nodeR *down;
+};
+
+struct nodeM
+{
+ 	   struct nodeR *down;
+	   struct nodeC *right;
+};
+/* what i'm thinking:
+
+- get the user to input the numbers and thier specific locations right in the beginning with (y/n) looping. aqnd then make the col and row linked lists accordingly.
+- or , get the user to enter the number of rows and cols before hand
+
+*/
+
+nodeA *start= new nodeA;
+nodeA *temp= new nodeA;
+
+int main_n;
+
+void readlist()
+{
+    cout<<"enter the number of elements for the main list";
+    cin>>main_n;
+
+    cout<<"enter a number (main list 1st element)";
+    cin>>temp->data;
+    cout<<temp->data;
+    temp->dp = NULL;
+    temp->rp = NULL;
+    end = temp;
+    start = temp;
+
+
+    for(int i =0; i<main_n-1; i++)
+    {
+        nodeA *x = new nodeA;
+        cout<<"enter a number (main list)";
+        cin>>x->data;
+        cout<<x->data;
+        x->dp = NULL;
+
+        cout<<"enter the number of elements for the sub list";
+        int sub_n;
+        cin>>sub_n;
+
+        nodeB *y = new nodeB;
+        cout<<"enter a number (right list 1st)";
+        cin>>y->data;
+        cout<<y->data;
+        y->rp = NULL;
+        x->rp = y;
+
+        nodeB *tempb=y;
+
+        for(int j =0; j<sub_n-1; j++)
+        {
+            nodeB *z = new nodeB;
+            cout<<"enter a number (right list)";
+            cin>>z->data;
+            cout<<z->data;
+            z->rp = NULL;
+            tempb->rp = z;
+        }
+        end->dp = x;
+    }
+
+
+}
